@@ -232,8 +232,8 @@
                 <a href="#inicio">Inicio</a>
                 <a href="#torneos">Torneos</a>
                 <a href="#equipos">Equipos</a>
-                <a href="#">Política de Privacidad</a>
-                <a href="#">Términos de Uso</a>
+                <a href="#license-modal" class="footer-license-link">Política de Privacidad</a>
+                <a href="#license-modal" class="footer-license-link">Términos de Uso</a>
             </nav>
             <div class="footer-social">
                 <a href="#" aria-label="Twitter / X" class="social-link">
@@ -248,6 +248,57 @@
             </div>
         </div>
     </footer>
+
+    <!-- ========== MODAL DE LICENCIA (POLÍTICA Y TÉRMINOS) ========== -->
+    <div id="license-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close" aria-label="Cerrar modal">&times;</button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-icon">&#128274;</span>
+                    <h2 id="modal-title" class="gradient-text">Licencia y Términos de Uso</h2>
+                </div>
+                <div class="modal-body">
+                    <p class="license-highlight">Este sitio web utiliza una licencia que prohíbe estrictamente el uso comercial.</p>
+                    
+                    <div class="license-box">
+                        <h3>Licencia Creative Commons Reconocimiento-NoComercial 4.0 Internacional (CC BY-NC 4.0)</h3>
+                        <p>Al acceder y utilizar <strong>VORTEX ESPORTS</strong>, usted acepta quedar vinculado por los términos de esta licencia internacional de Creative Commons.</p>
+                        
+                        <div class="license-rights">
+                            <div class="right-item">
+                                <span class="right-icon allowed">&#10004;</span>
+                                <div>
+                                    <strong>Usted es libre de:</strong>
+                                    <ul>
+                                        <li><strong>Compartir:</strong> Copiar y redistribuir el material en cualquier medio o formato.</li>
+                                        <li><strong>Adaptar:</strong> Remezclar, transformar y construir a partir del material.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="right-item">
+                                <span class="right-icon forbidden">&#10008;</span>
+                                <div>
+                                    <strong>Bajo las siguientes condiciones:</strong>
+                                    <ul>
+                                        <li><strong>Reconocimiento:</strong> Debe otorgar el crédito correspondiente, proporcionar un enlace a la licencia e indicar si se realizaron cambios.</li>
+                                        <li><strong>No Comercial (NC):</strong> No puede utilizar el material con fines comerciales ni para obtener un beneficio económico directo o indirecto.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Declaración Adicional de Uso No Comercial</h3>
+                    <p>Todo el código fuente, diseño de interfaz, gráficos, animaciones y contenido dinámico expuesto en esta plataforma está destinado única y exclusivamente a fines educativos, informativos y de entretenimiento personal. Queda terminantemente prohibida cualquier venta, redistribución pagada, inclusión en plataformas comerciales o uso del contenido/código de Vortex Esports para beneficio económico propio o de terceros sin previa autorización escrita.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="modal-accept-btn">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
