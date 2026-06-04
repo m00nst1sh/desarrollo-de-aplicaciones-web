@@ -142,9 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (errorSpan) errorSpan.textContent = '';
     }
 
-    /** Valida un email con expresión regular */
+    /** Valida un email con expresión regular (solo dominios válidos) */
     function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
     }
 
     // Limpiar errores en tiempo real al escribir
@@ -167,6 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
             isValid = false;
         } else if (nombre.length < 2) {
             showError('nombre', 'Mínimo 2 caracteres.');
+            isValid = false;
+        } else if (/\d/.test(nombre)) {
+            showError('nombre', 'El nombre no puede contener números.');
             isValid = false;
         } else {
             clearError('nombre');
@@ -214,6 +217,54 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 successMsg.classList.remove('visible');
             }, 5000);
+        }
+    });
+
+    /* ==================== MODAL DE LICENCIA ==================== */
+    const modal = document.getElementById('license-modal');
+    const modalClose = document.getElementById('modal-close');
+    const modalAccept = document.getElementById('modal-accept-btn');
+    const licenseLinks = document.querySelectorAll('.footer-license-link');
+
+    /** Abre el modal de licencia */
+    function openModal(e) {
+        e.preventDefault();
+        modal.classList.add('open');
+        body.style.overflow = 'hidden';
+        // Enfocar el botón de aceptar para accesibilidad
+        setTimeout(() => modalAccept.focus(), 100);
+    }
+
+    /** Cierra el modal de licencia */
+    function closeModal() {
+        modal.classList.remove('open');
+        // Solo restaurar overflow si el menú móvil no está abierto
+        if (!mainNav.classList.contains('open')) {
+            body.style.overflow = '';
+        }
+    }
+
+    // Agregar listeners a los enlaces de licencia
+    licenseLinks.forEach(link => {
+        link.addEventListener('click', openModal);
+    });
+
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    if (modalAccept) modalAccept.addEventListener('click', closeModal);
+    
+    // Cerrar al hacer clic en el overlay (fuera del contenedor del modal)
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                closeModal();
+            }
+        });
+    }
+
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) {
+            closeModal();
         }
     });
 });
