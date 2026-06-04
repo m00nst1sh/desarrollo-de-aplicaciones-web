@@ -142,9 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (errorSpan) errorSpan.textContent = '';
     }
 
-    /** Valida un email con expresión regular */
+    /** Valida un email con expresión regular (solo dominios válidos) */
     function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
     }
 
     // Limpiar errores en tiempo real al escribir
@@ -167,6 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
             isValid = false;
         } else if (nombre.length < 2) {
             showError('nombre', 'Mínimo 2 caracteres.');
+            isValid = false;
+        } else if (/\d/.test(nombre)) {
+            showError('nombre', 'El nombre no puede contener números.');
             isValid = false;
         } else {
             clearError('nombre');
